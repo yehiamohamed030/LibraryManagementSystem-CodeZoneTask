@@ -7,14 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.5" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LibraryManagementSystem.BLL\LibraryManagementSystem.BLL.csproj" />
     <ProjectReference Include="..\LibraryManagementSystem.DAL\LibraryManagementSystem.DAL.csproj" />
   </ItemGroup>
 

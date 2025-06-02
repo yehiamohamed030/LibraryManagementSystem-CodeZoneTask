@@ -1,0 +1,68 @@
+﻿@using LibraryManagementSystem.Web.ViewModels
+@model IEnumerable<AuthorViewModel>
+@{
+    ViewData["Title"] = "Authors";
+}
+<h1 class="text-md-center">Authors</h1>
+
+<div class="d-grid gap-2 justify-content-md-start">
+    <a class="btn btn-lg btn-primary mb-3 bi bi-plus-circle-fill " type="button" asp-area="" asp-controller="Author" asp-action="Create"> Add New Author </a>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col" class="table-primary">Full Name</th>
+            <th scope="col" class="table-primary">Email</th>
+            <th scope="col" class="table-primary">Website</th>
+            <th scope="col" class="table-primary">Bio</th>
+            <th scope="col" class="table-primary">Books</th>
+            <th scope="col" class="table-primary">Edit</th>
+            <th scope="col" class="table-primary">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr scope="row">
+                <td>@author.FullName</td>
+                <td>@author.Email</td>
+                <td>@author.Website</td>
+                <td>@author.Bio</td>
+                <td>
+                    <select class="form-select">
+                        @if (author.Books != null && author.Books.Any())
+                        {
+                            <option selected disabled>---Books---</option>
+                            foreach (var book in author.Books)
+                            {
+                                <option>@book.Title</option>
+                            }
+                        }
+                        else
+                        {
+                            <option selected disabled>No books</option>
+                        }
+                    </select>
+                </td>
+                <td>
+                    <a type="button" class="btn btn-warning bi bi-pencil-fill" asp-area="" asp-controller="Author" asp-action="Edit" asp-route-id="@author.Id"> Edit </a>
+                </td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@author.Id" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-danger bi bi-trash3-fill"> Delete </button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-dismissible alert-danger alert-custom">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>@TempData["AlertMessage"]</strong>
+        </div>
+    }
+}

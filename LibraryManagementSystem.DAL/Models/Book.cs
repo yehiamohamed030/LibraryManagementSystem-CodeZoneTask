@@ -15,6 +15,7 @@ namespace LibraryManagementSystem.DAL.Models
         public string Title { get; set; }
         [Required]
         public Genre Genre { get; set; }
+        [MaxLength(300)]
         public string? Description { get; set; }
 
         public int AuthorId { get; set; }
