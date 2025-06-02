@@ -21,8 +21,7 @@ namespace LibraryManagementSystem.DAL.Models
         [MaxLength(300)]
         public string? Bio { get; set; }
 
-        public IReadOnlyCollection<Book> Books => _books.AsReadOnly();
-        private List<Book> _books { get; set; } = new List<Book>();
+        public ICollection<Book> Books { get; set; } = new List<Book>();
 
     }
 }
