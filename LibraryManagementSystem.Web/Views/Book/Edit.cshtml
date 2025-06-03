@@ -1,0 +1,41 @@
+﻿@using LibraryManagementSystem.Web.ViewModels
+@model CreateBookViewModel
+
+<h5 class="mt-3 mb-3 text-center">Add New Book</h5>
+
+<div class="container-fluid">
+    <form asp-controller="Book" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Title" class="form-label mt-4">Full Name</label>
+                    <input type="text" class="form-control" asp-for="Title" placeholder="Title" autocomplete="off">
+                    <span asp-validation-for="Title" class="form-text text-warning"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Genre" class="form-label">Genre</label>
+                    <select asp-for="Genre" asp-items="Model.GenreList" class="form-select">
+                        <option selected disabled value="">-- Select Genre --</option>
+                    </select>
+                    <span asp-validation-for="Genre" class="form-text text-warning"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="form-label mt-4">Description</label>
+                    <input type="text" class="form-control" asp-for="Description" placeholder="Description" autocomplete="off">
+                    <span asp-validation-for="Description" class="form-text text-warning"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AuthorId" class="form-label">Authors</label>
+                    <select asp-for="AuthorId" asp-items="Model.AuthorList" class="form-select">
+                        <option selected disabled value="">-- Select Author --</option>
+                    </select>
+                    <span asp-validation-for="AuthorId" class="form-text text-warning"></span>
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Edit Book</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

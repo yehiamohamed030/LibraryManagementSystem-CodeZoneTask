@@ -4,12 +4,14 @@ using LibraryManagementSystem.Web.ViewModels;
 
 namespace LibraryManagementSystem.Web.Profiles
 {
-    public class AuthorProfile : Profile
+    public class MappingProfile : Profile
     {
-        public AuthorProfile()
+        public MappingProfile()
         {
             CreateMap<AuthorDto, AuthorViewModel>().ReverseMap();
             CreateMap<BookDto, BookViewModel>().ReverseMap();
+            CreateMap<BookDto, CreateBookViewModel>().ReverseMap();
+            CreateMap<PaginatedBookDto, PaginatedBookViewModel>().ReverseMap();
         }
     }
 }

@@ -12,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseInMemoryDatabase("InMemoryDb"));
 
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

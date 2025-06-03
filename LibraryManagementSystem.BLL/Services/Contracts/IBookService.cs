@@ -10,6 +10,7 @@ namespace LibraryManagementSystem.BLL.Services.Contracts
     public interface IBookService
     {
         Task<IEnumerable<BookDto>> ListBooksAsync();
+        Task<PaginatedBookDto> GetPaginatedBooksAsync(int pageNumber, int pageSize);
 
         Task<BookDto> GetBookByIdAsync(int bookId);
 

@@ -1,0 +1,20 @@
+﻿@using LibraryManagementSystem.Web.ViewModels
+@model PaginatedBookViewModel
+@{
+    ViewData["Title"] = "Books";
+}
+<h1 class="text-md-center">Books</h1>
+
+<div class="d-grid gap-2 justify-content-md-start">
+    <a class="btn btn-lg btn-primary mb-3 bi bi-plus-circle-fill " type="button" asp-area="" asp-controller="Book" asp-action="Create"> Add New Book </a>
+</div>
+@Html.Partial("_BooksListView.cshtml", Model)
+@{
+    if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-dismissible alert-danger alert-custom">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>@TempData["AlertMessage"]</strong>
+        </div>
+    }
+}
