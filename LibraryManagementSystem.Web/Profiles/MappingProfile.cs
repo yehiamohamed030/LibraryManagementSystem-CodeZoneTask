@@ -9,9 +9,12 @@ namespace LibraryManagementSystem.Web.Profiles
         public MappingProfile()
         {
             CreateMap<AuthorDto, AuthorViewModel>().ReverseMap();
+
             CreateMap<BookDto, BookViewModel>().ReverseMap();
             CreateMap<BookDto, CreateBookViewModel>().ReverseMap();
             CreateMap<PaginatedBookDto, PaginatedBookViewModel>().ReverseMap();
+
+            CreateMap<BookStatusDto, BorrowingBookViewModel>().ReverseMap();
         }
     }
 }

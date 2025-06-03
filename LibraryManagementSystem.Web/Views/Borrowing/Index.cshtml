@@ -1,0 +1,29 @@
+﻿@using LibraryManagementSystem.Web.ViewModels
+@model IEnumerable<BorrowingBookViewModel>
+@{
+    ViewData["Title"] = "Borrowing Service";
+}
+<h1 class="text-md-center">Books Status</h1>
+
+<div class="d-grid gap-2 justify-content-md-start">
+    <a class="btn btn-lg btn-primary mb-3 bi bi-plus-circle-fill " type="button" asp-area="" asp-controller="Borrowing" asp-action="Create"> Borrow A Book </a>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col" class="table-primary">Book Title</th>
+            <th scope="col" class="table-primary">Status</th>
+            <th scope="col" class="table-primary">Borrowed Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr scope="row">
+                <td>@book.Title</td>
+                <td>@book.Status.ToString()</td>
+                <td>@(book.BorrowedDate?.ToString("yyyy-MM-dd") ?? "")</td>
+            </tr>
+        }
+    </tbody>
+</table>
