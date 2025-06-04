@@ -62,11 +62,9 @@ namespace LibraryManagementSystem.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
-        {
-            
+        {            
             await _authorService.DeleteAuthorAsync(id);
             TempData["AlertMessage"] = "Author Has Been Deleted!";
-            
             return RedirectToAction(nameof(Index));
         }
     }

@@ -72,10 +72,8 @@ namespace LibraryManagementSystem.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
-
             await _bookService.DeleteBookAsync(id);
             TempData["AlertMessage"] = "Book Has Been Deleted!";
-
             return RedirectToAction(nameof(Index));
         }
         private async Task PopulateDropdownsAsync(CreateBookViewModel model)

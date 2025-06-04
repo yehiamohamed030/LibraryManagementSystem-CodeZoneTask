@@ -1,6 +1,7 @@
 using LibraryManagementSystem.BLL.Services.Contracts;
 using LibraryManagementSystem.BLL.Services.Implementions;
 using LibraryManagementSystem.DAL.Data;
+using LibraryManagementSystem.Web.Middlewares;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -40,7 +41,7 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseExceptionHandlerMiddleware();
 app.UseRouting();
 
 app.UseAuthorization();
