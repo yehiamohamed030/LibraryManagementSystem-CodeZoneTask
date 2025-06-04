@@ -1,8 +1,47 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<div class="container mt-5">
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-4 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Author Management</h5>
+                    <p class="card-text">
+                        Manage authors with full Create, Read, Update, and Delete (CRUD) operations.
+                    </p>
+                    <div class="text-center">
+                        <a class="btn btn-primary" asp-area="" asp-controller="Author" asp-action="Index">Manage Authors</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Book Management</h5>
+                    <p class="card-text">
+                        Manage books with full Create, Read, Update, and Delete (CRUD) operations.
+                    </p>
+                    <div class="text-center">
+                        <a class="btn btn-primary" asp-area="" asp-controller ="Book" asp-action="Index">Manage Books</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="row justify-content-center">
+        <div class="col-md-4 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Borrowing System</h5>
+                    <p class="card-text">Track and manage book borrowings with filtering by status, borrow date, and return date. Borrow and return books.</p>
+                    <div class="text-center">
+                        <a class="btn btn-primary" asp-area="" asp-controller="Borrowing" asp-action="Index">Manage Borrowings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

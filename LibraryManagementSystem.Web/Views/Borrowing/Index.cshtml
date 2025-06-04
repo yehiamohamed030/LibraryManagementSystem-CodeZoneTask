@@ -5,12 +5,9 @@
 }
 <h1 class="text-md-center">Books Status</h1>
 
-<div class="row mb-3">
-    <div class="col-md-3">
-        <a class="btn btn-lg btn-primary bi bi-plus-circle-fill" asp-controller="Borrowing" asp-action="Create"> Borrow A Book </a>
-    </div>
-    <div class="col-md-9">
-        <form asp-controller="Borrowing" asp-action="Index" method="get" class="row g-2 mb-3 align-items-end">
+<div class="row mb-3 justify-content-center">
+    <div class="col-md-10">
+        <form asp-controller="Borrowing" asp-action="Index" method="get" class="row g-2 mb-3 align-items-end justify-content-center">
             <div class="col-md-2">
                 <label for="status" class="form-label">Status</label>
                 <select name="status" class="form-select">
@@ -58,6 +55,17 @@
         }
     </tbody>
 </table>
-<div class="d-grid gap-2 justify-content-md-end">
-    <a class="btn btn-lg btn-success mb-3 bi bi-plus-circle-fill " type="button" asp-area="" asp-controller="Borrowing" asp-action="Return"> Return A Book </a>
+<div class="container mt-5">
+    <div class="row justify-content-between">
+        <div class="col-auto">
+            <a class="btn btn-lg btn-primary bi bi-plus-circle-fill" asp-controller="Borrowing" asp-action="Create">
+                Borrow A Book
+            </a>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-lg btn-success bi bi-plus-circle-fill" asp-controller="Borrowing" asp-action="Return">
+                Return A Book
+            </a>
+        </div>
+    </div>
 </div>
