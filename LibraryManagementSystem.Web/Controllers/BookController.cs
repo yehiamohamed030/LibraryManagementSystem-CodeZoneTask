@@ -20,7 +20,7 @@ namespace LibraryManagementSystem.Web.Controllers
             _mapper = mapper;
             _authorService = authorService;
         }
-        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 2)
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 4)
         {
             var data = await _bookService.GetPaginatedBooksAsync(pageNumber, pageSize);
             var ViewModel = _mapper.Map<PaginatedBookViewModel>(data);
