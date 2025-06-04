@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LibraryManagementSystem.BLL.Services.Implementions
@@ -134,7 +135,8 @@ namespace LibraryManagementSystem.BLL.Services.Implementions
             if (parts.Length != 4 || parts.Any(p => p.Length < 2))
                 throw new Exception("Full name must consist of four names, each with at least 2 characters");
 
-            if (string.IsNullOrWhiteSpace(email) || !email.Contains('@'))
+            var emailRegex = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, emailRegex, RegexOptions.IgnoreCase))
                 throw new Exception("Invalid email address");
 
             if (bio?.Length > 300)

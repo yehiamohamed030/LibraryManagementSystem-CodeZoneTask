@@ -64,10 +64,6 @@ namespace LibraryManagementSystem.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Return(CreateBorrowBookViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return RedirectToAction(nameof(Index));
-            }
             await _borrowingService.ReturnBookAsync(model.bookId);
             return RedirectToAction(nameof(Index));
         }
