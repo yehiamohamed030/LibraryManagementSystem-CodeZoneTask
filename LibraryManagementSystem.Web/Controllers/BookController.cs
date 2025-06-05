@@ -5,6 +5,7 @@ using LibraryManagementSystem.DAL.Enums;
 using LibraryManagementSystem.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LibraryManagementSystem.Web.Controllers
 {
@@ -79,19 +80,10 @@ namespace LibraryManagementSystem.Web.Controllers
         private async Task PopulateDropdownsAsync(CreateBookViewModel model)
         {
             model.GenreList = Enum.GetValues(typeof(Genre))
-                .Cast<Genre>()
-                .Select(g => new SelectListItem
-                {
-                    Value = g.ToString(),
-                    Text = g.ToString()
-                });
+                .Cast<Genre>();
 
             var authors = await _authorService.ListAuthorsAsync();
-            model.AuthorList = authors.Select(a => new SelectListItem
-            {
-                Value = a.Id.ToString(),
-                Text = a.FullName
-            });
+            model.AuthorList = _mapper.Map<IEnumerable<AuthorViewModel>>(authors);
         }
     }
 }

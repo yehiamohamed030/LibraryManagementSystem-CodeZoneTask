@@ -39,6 +39,36 @@ namespace LibraryManagementSystem.BLL.Services.Implementions
                     }).ToList()
                 }).ToListAsync();
         }
+        public async Task<PaginatedAuthorDto> GetPaginatedAuthorsAsync(int pageNumber, int pageSize)
+        {
+            var totalRecords = _context.Authors.Count();
+            var totalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
+            var authors = await _context.Authors
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .Select(a => new AuthorDto
+                {
+                    Id = a.Id,
+                    FullName = a.FullName,
+                    Email = a.Email,
+                    Website = a.Website,
+                    Bio = a.Bio,
+                    Books = a.Books.Select(b => new BookDto
+                    {
+                        Id = b.Id,
+                        Title = b.Title,
+                        Genre = b.Genre
+                    }).ToList()
+                }).ToListAsync();
+            var Dto = new PaginatedAuthorDto
+            {
+                Authors = authors,
+                CurrentPage = pageNumber,
+                TotalPages = totalPages,
+                pageSize = pageSize
+            };
+            return Dto;
+        }
         public async Task<AuthorDto> GetAuthorByIdAsync(int authorId)
         {
             var author = await _context.Authors

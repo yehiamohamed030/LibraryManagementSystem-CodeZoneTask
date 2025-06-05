@@ -47,14 +47,14 @@ namespace LibraryManagementSystem.BLL.Services.Implementions
                     Description = b.Description,
                     Author = new AuthorDto { Id = b.Author.Id, FullName = b.Author.FullName }
                 }).ToListAsync();
-            var viewModel = new PaginatedBookDto
+            var Dto = new PaginatedBookDto
             {
                 Books = books,
                 CurrentPage = pageNumber,
                 TotalPages = totalPages,
                 pageSize = pageSize
             };
-            return viewModel;
+            return Dto;
         }
         public async Task<BookDto> GetBookByIdAsync(int bookId)
         {

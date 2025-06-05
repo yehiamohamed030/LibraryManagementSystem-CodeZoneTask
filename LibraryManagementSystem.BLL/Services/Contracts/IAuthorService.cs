@@ -10,6 +10,7 @@ namespace LibraryManagementSystem.BLL.Services.Contracts
     public interface IAuthorService
     {
         Task<IEnumerable<AuthorDto>> ListAuthorsAsync();
+        Task<PaginatedAuthorDto> GetPaginatedAuthorsAsync(int pageNumber, int pageSize);
         Task<AuthorDto> GetAuthorByIdAsync(int authorId);
         Task AddAuthorAsync(AuthorDto author);
         Task UpdateAuthorAsync(int authorId, AuthorDto author);

@@ -5,7 +5,7 @@ namespace LibraryManagementSystem.Web.ViewModels
 {
     public class CreateBorrowBookViewModel
     {
-        public IEnumerable<SelectListItem> Books { get; set; }
+        public IEnumerable<BorrowingBookViewModel> Books { get; set; }
         [Required(ErrorMessage = "Please select a book.")]
         public int bookId { get; set; }
     }

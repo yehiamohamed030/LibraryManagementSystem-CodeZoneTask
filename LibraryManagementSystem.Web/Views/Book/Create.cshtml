@@ -1,6 +1,17 @@
 ﻿@using LibraryManagementSystem.Web.ViewModels
 @model CreateBookViewModel
-
+@{
+    var genreSelectList = Model.GenreList.Select(g => new SelectListItem
+            {
+                Value = g.ToString(),
+                Text = g.ToString()
+            });
+    var authorSelectList = Model.AuthorList.Select(a => new SelectListItem
+            {
+                Value = a.Id.ToString(),
+                Text = a.FullName
+            });
+}
 <h5 class="mt-3 mb-3 text-center">Add New Book</h5>
 
 <div class="container-fluid">
@@ -14,7 +25,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Genre" class="form-label">Genre</label>
-                    <select asp-for="Genre" asp-items="Model.GenreList" class="form-select">
+                    <select asp-for="Genre" asp-items="genreSelectList" class="form-select">
                         <option selected disabled value="">-- Select Genre --</option>
                     </select>
                     <span asp-validation-for="Genre" class="form-text text-warning"></span>
@@ -26,7 +37,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="AuthorId" class="form-label">Authors</label>
-                    <select asp-for="AuthorId" asp-items="Model.AuthorList" class="form-select">
+                    <select asp-for="AuthorId" asp-items="authorSelectList" class="form-select">
                         <option selected disabled value="">-- Select Author --</option>
                     </select>
                     <span asp-validation-for="AuthorId" class="form-text text-warning"></span>

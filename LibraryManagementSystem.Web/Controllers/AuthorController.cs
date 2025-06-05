@@ -17,10 +17,10 @@ namespace LibraryManagementSystem.Web.Controllers
             _authorService = authorService;
             _mapper = mapper;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 4)
         {
-            var data = await _authorService.ListAuthorsAsync();
-            var dataVM = _mapper.Map<IEnumerable<AuthorViewModel>>(data);
+            var data = await _authorService.GetPaginatedAuthorsAsync(pageNumber, pageSize);
+            var dataVM = _mapper.Map<PaginatedAuthorViewModel>(data);
             return View(dataVM);
         }
         [HttpGet]

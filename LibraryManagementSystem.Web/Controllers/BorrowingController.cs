@@ -29,11 +29,7 @@ namespace LibraryManagementSystem.Web.Controllers
         {
             var books = await _borrowingService.ListBooksWithStatusAsync();
             var model = new CreateBorrowBookViewModel();
-            model.Books = books.Select(a => new SelectListItem
-            {
-                Value = a.BookId.ToString(),
-                Text = a.Title
-            });
+            model.Books = _mapper.Map<IEnumerable<BorrowingBookViewModel>>(books);
             return View(model);
         }
         [HttpPost]
@@ -54,11 +50,7 @@ namespace LibraryManagementSystem.Web.Controllers
         {
             var books = await _borrowingService.FilterBooksAsync(Status.Borrowed);
             var model = new CreateBorrowBookViewModel();
-            model.Books = books.Select(a => new SelectListItem
-            {
-                Value = a.BookId.ToString(),
-                Text = a.Title
-            });
+            model.Books = _mapper.Map<IEnumerable<BorrowingBookViewModel>>(books);
             return View(model);
         }
         [HttpPost]

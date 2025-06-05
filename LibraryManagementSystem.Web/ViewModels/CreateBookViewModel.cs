@@ -11,10 +11,10 @@ namespace LibraryManagementSystem.Web.ViewModels
         public string Title { get; set; }
         [Required(ErrorMessage = "*")]
         public Genre? Genre { get; set; }
-        public IEnumerable<SelectListItem>? GenreList { get; set; }
+        public IEnumerable<Genre>? GenreList { get; set; }
         public string? Description { get; set; }
         [Required(ErrorMessage = "*")]
         public int? AuthorId { get; set; }
-        public IEnumerable<SelectListItem>? AuthorList { get; set; }
+        public IEnumerable<AuthorViewModel>? AuthorList { get; set; }
     }
 }
