@@ -113,15 +113,6 @@ namespace LibraryManagementSystem.BLL.Services.Implementions
             _context.Books.Remove(book);
             await _context.SaveChangesAsync();
         }
-        public async Task<IEnumerable<AuthorDto>> GetAllAuthorsAsync()
-        {
-            return await _context.Authors.Select(a => new AuthorDto
-            {
-                Id = a.Id,
-                FullName = a.FullName
-            }).ToListAsync();
-        }
-
         private void ValidateBook(BookDto dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Title))
